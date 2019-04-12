@@ -1,4 +1,4 @@
-# encoding: UTF-8
+#/Users/javierg/axlsx/test/tc_package.rb encoding: UTF-8
 require 'tc_helper.rb'
 
 class TestPackage < Test::Unit::TestCase
@@ -109,7 +109,7 @@ class TestPackage < Test::Unit::TestCase
     assert_nothing_raised do
       begin
         @package.serialize(@fname)
-        zf = Zip::ZipFile.open(@fname)
+        zf = Zip::File.open(@fname)
         @package.send(:parts).each{ |part| zf.get_entry(part[:entry]) }
         File.delete(@fname)
       rescue Errno::EACCES
